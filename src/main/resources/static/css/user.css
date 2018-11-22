@@ -1,0 +1,82 @@
+html, body {
+    background: #ebebeb none repeat scroll 0 0;
+    color: #505050;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    line-height: 1.75em;
+    position: relative;
+    outline: medium none;
+    overflow-x: hidden;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.split-line {
+    background: lightgray none repeat scroll 0 0;
+    height: 2px;
+    overflow: hidden;
+    width: auto;
+    margin-bottom: 14px;
+}
+
+/*Navbar Style*/
+#index_navbar {
+    background: #ffffff none repeat scroll 0 0;
+    border-bottom: 2px solid #e1e1e1;
+    border-top: 1px solid #ebebeb;
+    text-align: left;
+}
+
+/*Footer Style*/
+.main-footer {
+    background: #202020 none repeat scroll 0 0;
+    color: #959595;
+    margin: 0 0;
+    padding: 35px 0;
+}
+
+.main-footer .widget {
+    padding: 0 0;
+    margin-bottom: 35px;
+}
+
+.main-footer .widget .title {
+    border-bottom: 1px solid #303030;
+    color: #ffffff;
+}
+
+.main-footer .widget .content {
+    padding: 7px 14px;
+    color: #959595;
+}
+
+.main-footer .widget a:hover {
+    border: 0;
+    background: #e67e22;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+object {
+    margin: 0 0;
+    padding: 0 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.widget .title {
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 21px;
+    margin-top: 0;
+    padding-bottom: 7px;
+    position: relative;
+}
+
+.widget .title:after {
+    background: #e67e22 none repeat scroll 0 0;
+    bottom: -1px;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 135px;
+}

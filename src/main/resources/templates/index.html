@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Chart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Common using files -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}">
+    <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <!-- Chart using files -->
+    <script type="text/javascript" th:src="@{/js/Chart.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/js/Chart.js}"></script>
+    <script type="text/javascript" th:src="@{/js/utils.js}"></script>
+    <!-- Self using files -->
+    <!--<link rel="stylesheet" href="../css/user.css">-->
+    <!--<script type="text/javascript" src="../js/user/index.js"></script>-->
+
+</head>
+<body>
+<div class="container">
+    <H2>Test Chart~</H2>
+</div>
+<div class="container">
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Machine Using</div>
+            <div class="panel-body">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Total Available</div>
+            <div class="panel-body">
+                <canvas id="chart-area"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">SQL Box VM Status</div>
+            <div class="panel-body">
+                <canvas id="chart-area2"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Azure VM Status</div>
+            <div class="panel-body">
+                <canvas id="chart-area3"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Power BI VM Status</div>
+            <div class="panel-body">
+                <canvas id="chart-area4"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var randomScalingFactor = function () {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Red",
+                "Orange",
+                "Yellow",
+                "Green",
+                "Blue"
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var color = Chart.helpers.color;
+    var barChartData = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: 'Dataset 1',
+            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.red,
+            borderWidth: 1,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }, {
+            label: 'Dataset 2',
+            backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.blue,
+            borderWidth: 1,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }]
+
+    };
+
+    window.onload = function () {
+        var ctx1 = document.getElementById("chart-area").getContext("2d");
+        window.myPie = new Chart(ctx1, config);
+
+        var ctx2 = document.getElementById("chart-area2").getContext("2d");
+        window.myPie = new Chart(ctx2, config);
+
+        var ctx3 = document.getElementById("chart-area3").getContext("2d");
+        window.myPie = new Chart(ctx3, config);
+
+        var ctx4 = document.getElementById("chart-area4").getContext("2d");
+        window.myPie = new Chart(ctx4, config);
+
+
+        var barctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(barctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+        });
+    };
+</script>
+</body>
+</html>
