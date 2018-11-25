@@ -13,7 +13,7 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello() {
         System.out.println("Hello requested");
-        return "hello~~";
+        return "hello";
     }
 
     @GetMapping("/index")
